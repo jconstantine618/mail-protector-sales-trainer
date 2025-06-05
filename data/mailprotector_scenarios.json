@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "prospect": "Skyline MSP Group",
+    "industry": "Managed Services",
+    "category": "B2B Mid‑Market",
+    "decision_makers": [
+      {
+        "persona_name": "Jordan",
+        "persona_role": "MSP Owner / Partner",
+        "persona_background": "18 years building recurring‑revenue IT services; P&L‑focused",
+        "influence": 0.92,
+        "mood": {"today": "busy", "receptivity": 0.65},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "stack bloat raises costs",
+          "thin service margins",
+          "client email complaints"
+        ],
+        "buying_trigger": "annual margin review"
+      },
+      {
+        "persona_name": "Casey",
+        "persona_role": "Security‑Minded CTO",
+        "persona_background": "Former SOC analyst turned CTO; CISSP‑certified",
+        "influence": 0.78,
+        "mood": {"today": "optimistic", "receptivity": 0.58},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "email phishing escalations",
+          "noisy alert fatigue",
+          "compliance reporting overhead"
+        ],
+        "buying_trigger": "client credential‑phish incident"
+      }
+    ],
+    "difficulty": {"level": "Medium", "challenge_factor": 1.2},
+    "state": "Texas"
+  },
+  {
+    "id": 2,
+    "prospect": "SecureByte IT",
+    "industry": "Managed Services",
+    "category": "B2B Small Business",
+    "decision_makers": [
+      {
+        "persona_name": "Riley",
+        "persona_role": "IT Manager (SMB)",
+        "persona_background": "Administers 250‑seat Microsoft 365 tenant solo",
+        "influence": 0.64,
+        "mood": {"today": "stressed", "receptivity": 0.44},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "inbox noise",
+          "limited headcount",
+          "manual encryption workflows"
+        ],
+        "buying_trigger": "CEO complaints about spam surge"
+      },
+      {
+        "persona_name": "Jamie",
+        "persona_role": "MSP Account Executive",
+        "persona_background": "Quota‑carrying AE seeking differentiated offering",
+        "influence": 0.52,
+        "mood": {"today": "neutral", "receptivity": 0.71},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "commoditized email security market",
+          "long sales cycles",
+          "lack of unique value story"
+        ],
+        "buying_trigger": "lost deal to lower‑priced SEG"
+      }
+    ],
+    "difficulty": {"level": "Easy", "challenge_factor": 0.8},
+    "state": "Florida"
+  },
+  {
+    "id": 3,
+    "prospect": "CloudGuard Solutions",
+    "industry": "Managed Services",
+    "category": "B2B Mid‑Market",
+    "decision_makers": [
+      {
+        "persona_name": "Taylor",
+        "persona_role": "Security‑Minded CTO",
+        "persona_background": "Runs vCISO practice; focuses on zero‑trust frameworks",
+        "influence": 0.87,
+        "mood": {"today": "optimistic", "receptivity": 0.83},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "difficulty proving zero trust to clients",
+          "multiple vendors to manage",
+          "complex MX cutovers"
+        ],
+        "buying_trigger": "launching new zero‑trust service bundle"
+      },
+      {
+        "persona_name": "Alex",
+        "persona_role": "MSP Owner / Partner",
+        "persona_background": "Former network engineer; now focuses on growth",
+        "influence": 0.9,
+        "mood": {"today": "busy", "receptivity": 0.55},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "rising vendor costs",
+          "license reconciliation headaches",
+          "margin compression"
+        ],
+        "buying_trigger": "year‑end cost optimization project"
+      }
+    ],
+    "difficulty": {"level": "Hard", "challenge_factor": 1.5},
+    "state": "California"
+  },
+  {
+    "id": 4,
+    "prospect": "ProTech Networks",
+    "industry": "Managed Services",
+    "category": "B2B Mid‑Market",
+    "decision_makers": [
+      {
+        "persona_name": "Morgan",
+        "persona_role": "IT Manager (SMB)",
+        "persona_background": "Oversees helpdesk for healthcare clients; HIPAA aware",
+        "influence": 0.68,
+        "mood": {"today": "busy", "receptivity": 0.48},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "email archiving compliance",
+          "HIPAA fax replacement needs",
+          "slow eDiscovery searches"
+        ],
+        "buying_trigger": "upcoming HIPAA audit"
+      },
+      {
+        "persona_name": "Cameron",
+        "persona_role": "MSP Account Executive",
+        "persona_background": "Hunter AE looking to shorten sales cycles",
+        "influence": 0.56,
+        "mood": {"today": "optimistic", "receptivity": 0.77},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "hard to stand out in RFPs",
+          "complex demos slow deals",
+          "pricing confusion across multiple vendors"
+        ],
+        "buying_trigger": "new quarterly quota goal"
+      }
+    ],
+    "difficulty": {"level": "Medium", "challenge_factor": 1.2},
+    "state": "New York"
+  },
+  {
+    "id": 5,
+    "prospect": "NetFuse Managed Services",
+    "industry": "Managed Services",
+    "category": "B2B Small Business",
+    "decision_makers": [
+      {
+        "persona_name": "Quinn",
+        "persona_role": "MSP Owner / Partner",
+        "persona_background": "Bootstrapped MSP from 3‑person shop to 35 employees",
+        "influence": 0.89,
+        "mood": {"today": "stressed", "receptivity": 0.6},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "customer churn due to spam",
+          "limited engineering bandwidth",
+          "vendor management drag"
+        ],
+        "buying_trigger": "lost key account to phishing breach"
+      },
+      {
+        "persona_name": "Avery",
+        "persona_role": "IT Manager (SMB)",
+        "persona_background": "Solo admin juggling support & projects",
+        "influence": 0.6,
+        "mood": {"today": "busy", "receptivity": 0.46},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "constant ticket noise",
+          "manual allow/deny lists",
+          "slow vendor support SLAs"
+        ],
+        "buying_trigger": "board request for productivity improvement"
+      }
+    ],
+    "difficulty": {"level": "Easy", "challenge_factor": 0.8},
+    "state": "Georgia"
+  },
+  {
+    "id": 6,
+    "prospect": "BrightLayer IT",
+    "industry": "Managed Services",
+    "category": "B2B Mid‑Market",
+    "decision_makers": [
+      {
+        "persona_name": "Taylor",
+        "persona_role": "Security‑Minded CTO",
+        "persona_background": "Drives SOC2 readiness for clients; zero‑trust evangelist",
+        "influence": 0.84,
+        "mood": {"today": "neutral", "receptivity": 0.74},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "proving zero trust controls",
+          "multi‑vendor integration hassles",
+          "lack of email threat visibility"
+        ],
+        "buying_trigger": "client asks for zero‑trust certification proof"
+      },
+      {
+        "persona_name": "Jamie",
+        "persona_role": "MSP Account Executive",
+        "persona_background": "Focuses on regulated verticals (finance/health)",
+        "influence": 0.48,
+        "mood": {"today": "optimistic", "receptivity": 0.82},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "difficulty educating prospects on threats",
+          "need snack‑able content",
+          "long SOC approval cycles"
+        ],
+        "buying_trigger": "pipeline stalling on security objections"
+      }
+    ],
+    "difficulty": {"level": "Hard", "challenge_factor": 1.5},
+    "state": "Illinois"
+  },
+  {
+    "id": 7,
+    "prospect": "Apex Security Partners",
+    "industry": "Managed Services",
+    "category": "B2B Small Business",
+    "decision_makers": [
+      {
+        "persona_name": "Morgan",
+        "persona_role": "MSP Owner / Partner",
+        "persona_background": "Cybersecurity‑focused founder serving 50 SMBs",
+        "influence": 0.9,
+        "mood": {"today": "optimistic", "receptivity": 0.66},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "tool sprawl",
+          "training clients on encryption",
+          "threat remediation workload"
+        ],
+        "buying_trigger": "seeking new vendor for QBR innovation"
+      },
+      {
+        "persona_name": "Riley",
+        "persona_role": "Security‑Minded CTO",
+        "persona_background": "Ex‑penetration tester now leading product stack decisions",
+        "influence": 0.82,
+        "mood": {"today": "busy", "receptivity": 0.52},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "phishing simulations reveal gaps",
+          "manual encryption plugins fail",
+          "clients resist multi‑vendor pricing"
+        ],
+        "buying_trigger": "annual tech stack review"
+      }
+    ],
+    "difficulty": {"level": "Easy", "challenge_factor": 0.8},
+    "state": "North Carolina"
+  },
+  {
+    "id": 8,
+    "prospect": "Horizon TechOps",
+    "industry": "Managed Services",
+    "category": "B2B Mid‑Market",
+    "decision_makers": [
+      {
+        "persona_name": "Alex",
+        "persona_role": "IT Manager (SMB)",
+        "persona_background": "Manages 500‑seat SaaS portfolio for distributed workforce",
+        "influence": 0.7,
+        "mood": {"today": "stressed", "receptivity": 0.49},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "archiving storage limits",
+          "slow eDiscovery",
+          "noisy phishing false‑positives"
+        ],
+        "buying_trigger": "legal team requests faster discovery"
+      },
+      {
+        "persona_name": "Jordan",
+        "persona_role": "Security‑Minded CTO",
+        "persona_background": "Former MSSP architect; focuses on automation",
+        "influence": 0.81,
+        "mood": {"today": "neutral", "receptivity": 0.61},
+        "time_availability": {"window": "15"},
+        "pain_points": [
+          "integration overhead",
+          "lack of API visibility into email stack",
+          "manual threat hunting"
+        ],
+        "buying_trigger": "kicking off SOAR integration project"
+      }
+    ],
+    "difficulty": {"level": "Medium", "challenge_factor": 1.2},
+    "state": "Ohio"
+  },
+  {
+    "id": 9,
+    "prospect": "CoreShield Services",
+    "industry": "Managed Services",
+    "category": "B2B Small Business",
+    "decision_makers": [
+      {
+        "persona_name": "Jamie",
+        "persona_role": "MSP Account Executive",
+        "persona_background": "New AE hired to grow greenfield accounts",
+        "influence": 0.45,
+        "mood": {"today": "optimistic", "receptivity": 0.9},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "little differentiation",
+          "prospect skepticism about security claims",
+          "long POC cycles"
+        ],
+        "buying_trigger": "new lead gen campaign launch"
+      },
+      {
+        "persona_name": "Taylor",
+        "persona_role": "MSP Owner / Partner",
+        "persona_background": "Entrepreneur scaling from break‑fix to MSP model",
+        "influence": 0.88,
+        "mood": {"today": "busy", "receptivity": 0.6},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "cash‑flow pressure",
+          "high vendor minimums",
+          "support burden of legacy SEG"
+        ],
+        "buying_trigger": "migration off on‑prem SEG"
+      }
+    ],
+    "difficulty": {"level": "Easy", "challenge_factor": 0.8},
+    "state": "Arizona"
+  },
+  {
+    "id": 10,
+    "prospect": "SwiftSupport MSP",
+    "industry": "Managed Services",
+    "category": "B2B Small Business",
+    "decision_makers": [
+      {
+        "persona_name": "Avery",
+        "persona_role": "IT Manager (SMB)",
+        "persona_background": "Solo IT admin for multi‑site retail chain",
+        "influence": 0.6,
+        "mood": {"today": "busy", "receptivity": 0.38},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "email downtime risks",
+          "manual encryption headaches",
+          "user complaints about spam"
+        ],
+        "buying_trigger": "recent store outage due to phishing"
+      },
+      {
+        "persona_name": "Cameron",
+        "persona_role": "Security‑Minded CTO",
+        "persona_background": "Consultant turned CTO focusing on zero‑trust adoption",
+        "influence": 0.77,
+        "mood": {"today": "optimistic", "receptivity": 0.72},
+        "time_availability": {"window": "10"},
+        "pain_points": [
+          "lack of zero‑trust ready email stack",
+          "multiple encryption passwords",
+          "no single‑pane threat visibility"
+        ],
+        "buying_trigger": "board mandate for zero‑trust roadmap"
+      }
+    ],
+    "difficulty": {"level": "Easy", "challenge_factor": 0.8},
+    "state": "Colorado"
+  }
+]
