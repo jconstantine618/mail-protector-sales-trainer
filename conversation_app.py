@@ -29,7 +29,7 @@ def main():
     """
     # --- Configuration ---
     api_key = os.getenv("ELEVENLABS_API_KEY")
-    agent_id = "YOUR_AGENT_ID" # IMPORTANT: Replace with your actual agent ID
+    agent_id = "agent_01jzdf6g6mehda95hx56cc5pwd" # IMPORTANT: Replace with your actual agent ID
 
     # --- Pre-flight Checks ---
     if not api_key:
