@@ -1,8 +1,4 @@
-# For the web user interface
 streamlit
-
-# For loading environment variables (like API keys) from a .env file
 python-dotenv
-
-# The primary package for ElevenLabs voice-to-voice conversation
 elevenlabs
+openai
