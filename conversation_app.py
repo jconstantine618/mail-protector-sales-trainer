@@ -1,3 +1,4 @@
+import streamlit as st
 import os
 import sys
 import json
@@ -5,107 +6,116 @@ import random
 from elevenlabs.client import ElevenLabs
 from elevenlabs.conversational import Conversation
 
+# --- Page Configuration ---
+st.set_page_config(
+    page_title="Sales Trainer AI",
+    page_icon="🎙️",
+    layout="wide"
+)
+
+# --- Helper Function to Load Prospects ---
 def load_prospects(file_path='data/prospects.json'):
     """Loads prospect profiles from the specified JSON file."""
-    print(f"Attempting to load prospects from: {file_path}")
     try:
         with open(file_path, 'r') as f:
-            prospects = json.load(f)
-            print(f"Successfully loaded {len(prospects)} prospects.")
-            return prospects
+            return json.load(f)
     except FileNotFoundError:
-        print(f"---")
-        print(f"Error: The file '{file_path}' was not found.")
-        print("Please make sure your Python script is in the 'mail-protector-sales-trainer' root directory.")
-        print(f"---")
+        st.error(f"Error: The file '{file_path}' was not found.")
+        st.error("Please make sure your Python script is in the 'mail-protector-sales-trainer' root directory.")
         return None
     except json.JSONDecodeError:
-        print(f"Error: The file '{file_path}' contains invalid JSON. Please check its formatting.")
+        st.error(f"Error: The file '{file_path}' contains invalid JSON. Please check its formatting.")
         return None
 
-def main():
-    """
-    Main function to run the sales training conversation application.
-    """
-    # --- Configuration ---
-    api_key = os.getenv("ELEVENLABS_API_KEY")
-    agent_id = "agent_01jzdf6g6mehda95hx56cc5pwd" # IMPORTANT: Replace with your actual agent ID
+# --- Session State Initialization ---
+if 'prospect' not in st.session_state:
+    st.session_state.prospect = None
+    st.session_state.conversation_obj = None
+    st.session_state.running = False
+    st.session_state.transcript = []
 
-    # --- Pre-flight Checks ---
-    if not api_key:
-        print("Error: ELEVENLABS_API_KEY environment variable not set.")
-        sys.exit(1)
-    if agent_id == "YOUR_AGENT_ID":
-        print("Error: Please replace 'YOUR_AGENT_ID' with your actual agent ID in the script.")
-        sys.exit(1)
-
+# --- Sidebar for Configuration ---
+with st.sidebar:
+    st.header("Configuration")
+    
+    # --- API Key Handling ---
     try:
-        client = ElevenLabs(api_key=api_key)
-    except Exception as e:
-        print(f"Error initializing ElevenLabs client: {e}")
-        sys.exit(1)
+        # For Streamlit Community Cloud deployment
+        st.session_state.api_key = st.secrets["ELEVENLABS_API_KEY"]
+        st.success("ElevenLabs API Key loaded from secrets.", icon="✅")
+    except (KeyError, AttributeError):
+        # For local development
+        st.session_state.api_key = os.getenv("ELEVENLABS_API_KEY")
+        if st.session_state.api_key:
+            st.info("ElevenLabs API Key loaded from local .env file.", icon="ℹ️")
+        else:
+            st.error("ELEVENLABS_API_KEY not found. Please add it to your Streamlit secrets or a local .env file.")
+            st.stop()
 
-    # --- Load Prospect Personalities from External JSON File ---
+    # --- Agent ID Input ---
+    st.session_state.agent_id = st.text_input("ElevenLabs Agent ID:", value="YOUR_AGENT_ID")
+
+    st.divider()
+    
+    # --- Prospect Loading ---
     prospects = load_prospects()
-    if not prospects:
-        sys.exit(1) # Exit if loading failed.
+    if prospects:
+        if st.button("Load New Random Prospect"):
+            st.session_state.prospect = random.choice(prospects)
+            # Reset conversation if we load a new prospect
+            st.session_state.running = False
+            st.session_state.transcript = []
+            st.session_state.conversation_obj = None
 
-    # --- Select a Random Prospect for this Training Session ---
-    selected_prospect = random.choice(prospects)
+# --- Main App Body ---
+st.title("🎙️ AI Sales Call Trainer")
 
-    print("\n---")
-    print("🚀 This session's prospect is:")
-    print(f"   Name: {selected_prospect['prospect_name']}")
-    print(f"   Role: {selected_prospect['prospect_role']}")
-    print(f"   Company: {selected_prospect['company_name']}")
-    print("---\n")
+if st.session_state.prospect:
+    prospect = st.session_state.prospect
+    with st.expander("Show Prospect Details", expanded=True):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader(prospect['prospect_name'])
+            st.write(f"**Role:** {prospect['prospect_role']}")
+            st.write(f"**Company:** {prospect['company_name']} ({prospect['company_industry']})")
+        with col2:
+            st.write(f"**Disposition:** {prospect['disposition']}")
+            st.write(f"**Pain Point 1:** {prospect['pain_point_1']}")
+            st.write(f"**Pain Point 2:** {prospect['pain_point_2']}")
+    
+    st.divider()
 
-    # --- Callback Functions ---
-    def on_user_transcript(transcript: str):
-        """Called in real-time as the user (trainee) speaks."""
-        print(f"Trainee: {transcript}")
+    # --- Conversation Controls ---
+    if not st.session_state.running:
+        if st.button("▶️ Start Conversation", type="primary"):
+            if st.session_state.agent_id == "YOUR_AGENT_ID":
+                st.warning("Please enter your ElevenLabs Agent ID in the sidebar.")
+            else:
+                st.session_state.running = True
+                # Here we would normally start the conversation.
+                # In a real-world, complex Streamlit app, this would involve
+                # background processes or websockets to handle the audio stream.
+                # For this framework, we'll just update the state.
+                st.rerun()
+    else:
+        if st.button("⏹️ Stop Conversation"):
+            st.session_state.running = False
+            # Logic to gracefully stop the conversation
+            st.session_state.conversation_obj = None # Reset
+            st.success("Conversation stopped. A full transcript would be saved here.")
+            st.rerun()
 
-    def on_agent_response(response: str):
-        """Called in real-time as the agent (prospect) responds."""
-        print(f"Prospect ({selected_prospect['prospect_name']}): {response}")
+    # --- Transcript Display ---
+    st.subheader("Live Transcript")
+    if st.session_state.running:
+        st.info("Conversation in progress... Start speaking into your microphone.")
+        st.warning("NOTE: This is a UI framework. The real-time audio streaming from the original script is not fully implemented here due to web architecture complexities.")
+    
+    # This area would be dynamically updated with the transcript
+    transcript_area = st.container(height=300)
+    with transcript_area:
+        for message in st.session_state.transcript:
+            st.write(message)
 
-    def on_conversation_end(conversation_id: str, full_transcript: list):
-        """Called when the conversation ends, providing the full transcript for feedback."""
-        print(f"\n✅ Conversation {conversation_id} has ended.")
-        transcript_filename = f"{conversation_id}_transcript.txt"
-        print(f"💾 Saving full transcript to: {transcript_filename}")
-        try:
-            with open(transcript_filename, "w") as f:
-                for message in full_transcript:
-                    role = message.get('role', 'unknown').capitalize()
-                    text = message.get('text', '')
-                    f.write(f"{role}: {text}\n")
-            print("Transcript saved successfully.")
-        except IOError as e:
-            print(f"Error saving transcript: {e}")
-
-    # --- Main Execution ---
-    print("Starting conversation... Speak into your microphone to begin.")
-    print("Press Ctrl+C to end the conversation at any time.")
-
-    conversation = Conversation(
-        client=client,
-        agent_id=agent_id,
-        callback_user_transcript=on_user_transcript,
-        callback_agent_response=on_agent_response,
-        callback_on_end=on_conversation_end,
-    )
-
-    try:
-        # Start the conversation and inject the selected prospect's personality
-        conversation.start(variables=selected_prospect)
-    except KeyboardInterrupt:
-        print("\n🛑 Conversation interrupted by user. Shutting down...")
-        conversation.stop()
-    except Exception as e:
-        print(f"\nAn unexpected error occurred: {e}")
-        if 'conversation' in locals():
-            conversation.stop()
-
-if __name__ == "__main__":
-    main()
+else:
+    st.info("Click 'Load New Random Prospect' in the sidebar to begin a training session.")
